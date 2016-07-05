@@ -1,0 +1,27 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background: #eee;
+}
+
+#container {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1024px;
+	padding: 1em 2em;
+	border: 1px solid;
+}
+
+.card {
+	float: left;
+	max-width: 200px;
+	margin: 15px 15px 0 0;
+	border: 1px solid;
+}

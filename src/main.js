@@ -1,19 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import App from './App.vue'
-import lista from './components/lista.vue'  
-import detalhes from './components/detalhes.vue'
+import List from './components/lista.vue'  
+import Details from './components/detalhes.vue'
 
+Vue.use(VueResource)
 Vue.use(VueRouter)
 
 const router = new VueRouter()
 
 router.map({  
     '/': {
-        component: lista
+        component: List
     },
-    '/detalhe': {
-        component: detalhes
+    '/detalhe/:shotId': {
+        component: Details
     },
 })
 
