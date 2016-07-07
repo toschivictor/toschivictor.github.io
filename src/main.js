@@ -8,6 +8,7 @@ import Details from './components/detalhes.vue'
 Vue.use(VueResource)
 Vue.use(VueRouter)
 
+
 const router = new VueRouter()
 
 router.map({  
@@ -16,7 +17,7 @@ router.map({
     },
     '/detalhe/:shotId': {
         component: Details
-    },
+    }
 })
 
 router.start(App, '#container')
