@@ -1,6 +1,6 @@
 # SPA with API REST
 
-> SPA feita com VUE.js, que faz consultas à API Dribbble.
+> SPA feita com VUE.JS, que faz consultas à API Dribbble.
 
 
 
