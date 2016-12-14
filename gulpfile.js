@@ -7,6 +7,8 @@ const babel   = require('gulp-babel')
 const concat  = require('gulp-concat')
 const connect = require('gulp-connect')
 const rename  = require('gulp-rename')
+const uglify  = require('gulp-uglify')
+const autoprefixer = require('gulp-autoprefixer')
 
 gulp.task('connect', () => {
     connect.server({
@@ -20,7 +22,8 @@ gulp.task('js', () =>
 		.pipe(babel({
             presets: ['latest']
         }))
-		.pipe(concat('app.js'))        
+		.pipe(concat('app.js'))
+		.pipe(uglify())    
 		.pipe(gulp.dest('build/js'))
 		.pipe(connect.reload())
 )
@@ -31,6 +34,7 @@ gulp.task('less', () => {
             paths: [ path.join(__dirname, 'less', 'includes') ]
         }))
         .pipe(rename('style.css'))
+		.pipe(autoprefixer())
         .pipe(gulp.dest('build/css/'))
         .pipe(connect.reload())
 })

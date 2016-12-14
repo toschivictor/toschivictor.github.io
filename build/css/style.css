@@ -27,9 +27,9 @@ section {
   position: absolute;
   height: auto;
   width: 100%;
-  -webkit-box-shadow: 1px 1px 10px 0 #666;
   box-shadow: 1px 1px 10px 0 #666;
   opacity: 0;
+  -webkit-transition: opacity 1.2s;
   transition: opacity 1.2s;
   background: #eee;
 }
@@ -51,6 +51,7 @@ section {
 }
 .show {
   opacity: 1;
+  -webkit-transition: opacity 1.2s;
   transition: opacity 1.2s;
 }
 .prev,
@@ -68,9 +69,6 @@ section {
   cursor: pointer;
   opacity: 1;
   -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -ms-transition: all 1s ease;
-  -o-transition: all 1s ease;
   transition: all 1s ease;
 }
 .next {
