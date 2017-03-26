@@ -9,6 +9,6 @@ npm install
 # serve with hot reload at localhost:8080
 gulp
 
-# build for production with minification after 'gulp' command
+# build for production
 path: ./build
 ```
