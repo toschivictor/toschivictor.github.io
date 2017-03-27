@@ -69,7 +69,10 @@ button {
         content: 'Enviar';
     }
     &:hover { 
-        transform: translateY(-3px);
+        transform: scaleX(0.5);
         box-shadow: 0 6px 6px 0 rgba(0,0,0,0.2);
+    }
+    &:focus {
+        opacity: 0.5;
     }
 }

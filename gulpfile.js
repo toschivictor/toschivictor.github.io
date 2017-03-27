@@ -26,7 +26,7 @@ gulp.task('connect', () => {
 });
 
 gulp.task('js', () =>
-	gulp.src(['src/js/*.js'])
+	gulp.src(['src/js/index.js', 'src/js/*.js'])
 		.pipe(babel({
             presets: ['latest']
         }))
