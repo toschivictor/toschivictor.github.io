@@ -1,0 +1,75 @@
+$color: #1abc9c;
+
+h1, input::-webkit-input-placeholder, button {
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+h1 {
+    width: 100%;
+    font-size: 18px;
+    background: darken($color, 4%);
+    color: white;
+    border-radius: 3px 3px 0 0;
+    padding: 20px;
+}
+
+form {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 570px;
+    margin: 20px auto 0;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.2);
+    padding-bottom: 40px;
+    border-radius: 3px;
+    h1 {
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
+
+input {
+    margin: 40px auto;
+    width: 90%;
+    display: block;
+    border: none;
+    padding: 10px 0;
+    border-bottom: solid 1px $color;
+    transition: all 0.3s cubic-bezier(.64,.09,.08,1);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, $color 4%);
+    background-position: -600px 0;
+    background-size: 600px 100%;
+    background-repeat: no-repeat;
+    color: darken($color, 20%);
+    &:focus {
+        box-shadow: none;
+        outline: none;
+        background-position: 0 0;
+        &::-webkit-input-placeholder {
+            color: $color;
+            font-size: 11px;
+            transform: translateY(-20px);
+            visibility: visible !important;
+        }
+    }
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    width: 91%;
+    border: none;
+    background: $color;
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 10px;    
+    color: white;    
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+    &::before {
+        content: 'Enviar';
+    }
+    &:hover { 
+        transform: translateY(-3px);
+        box-shadow: 0 6px 6px 0 rgba(0,0,0,0.2);
+    }
+}

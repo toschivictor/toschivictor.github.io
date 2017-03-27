@@ -1,4 +1,4 @@
-# Displaying data from a JSON file (Vanilla JS)
+# HTML rendering engine  #
 
 ## Build Setup
 
@@ -7,8 +7,11 @@
 npm install
 
 # serve with hot reload at localhost:8080
-gulp
+npm start
 
-# build for production with minification after 'gulp' command
-path: ./build
+# build 
+npm run build
+
+# unit tests
+npm test
 ```

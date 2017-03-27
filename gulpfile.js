@@ -1,61 +1,68 @@
-'use strict'
+'use strict';
 
-const path    = require('path')
-const gulp    = require('gulp')
-const less    = require('gulp-less')
-const babel   = require('gulp-babel')
-const concat  = require('gulp-concat')
-const connect = require('gulp-connect')
-const rename  = require('gulp-rename')
-const uglify  = require('gulp-uglify')
-const autoprefixer = require('gulp-autoprefixer')
+const autoprefixer = require('gulp-autoprefixer');
+const babel   = require('gulp-babel');
+const concat  = require('gulp-concat');
+const connect = require('gulp-connect');
+const gulp    = require('gulp');
+const path    = require('path');
+const rename  = require('gulp-rename');
+const sass    = require('gulp-sass');
+const Server  = require('karma').Server;
+const uglify  = require('gulp-uglify');
+
+gulp.task('test', () => {
+	new Server({
+		configFile: __dirname + '/karma.conf.js',
+		
+	}).start();
+});
 
 gulp.task('connect', () => {
     connect.server({
-		root: 'build',
+		root: 'dist',
 		livereload: true
 	})
-})
+});
 
 gulp.task('js', () =>
-	gulp.src(['src/js/*.js', 'src/js/**/*.js'])
+	gulp.src(['src/js/*.js'])
 		.pipe(babel({
             presets: ['latest']
         }))
 		.pipe(concat('app.js'))
 		.pipe(uglify())    
-		.pipe(gulp.dest('build/js'))
+		.pipe(gulp.dest('dist/js'))
 		.pipe(connect.reload())
-)
+);
 
-gulp.task('less', () => {
-    return gulp.src('src/less/*.less')
-        .pipe(less({
-            paths: [ path.join(__dirname, 'less', 'includes') ]
-        }))
-        .pipe(rename('style.css'))
+gulp.task('sass', () =>
+    gulp.src('./src/sass/**/*.scss')
 		.pipe(autoprefixer())
-        .pipe(gulp.dest('build/css/'))
-        .pipe(connect.reload())
-})
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+		.pipe(rename('style.css'))
+        .pipe(gulp.dest('./dist/css'))
+);
 
 gulp.task('html', () =>
-	gulp.src('src/index.html')
-		.pipe(gulp.dest('build'))
+	gulp.src('src/*.html')
+		.pipe(gulp.dest('dist'))
 		.pipe(connect.reload())
-)
+);
 
 gulp.task('json', () => 
-	gulp.src('src/data/brokers.json')
-		.pipe(gulp.dest('build/data'))
+	gulp.src('src/data/mock.js')
+		.pipe(gulp.dest('dist/data'))
 		.pipe(connect.reload())
 )
 
 gulp.task('watch', () => {
-	gulp.watch(['src/*.html'], ['html']);
-	gulp.watch(['src/less/*.less'], ['less']);
+    gulp.watch(['src/*.html'], ['html']);
+	gulp.watch(['src/sass/**/*.scss'], ['sass']);
 	gulp.watch(['src/js/*.js'], ['js']);
-	gulp.watch(['src/data/brokers.json'], ['json']);
-})
+	gulp.watch(['src/data/*.js'], ['json']);
+});
 
-gulp.task('default', ['js', 'less', 'html', 'json', 'connect', 'watch']);
+gulp.task('default', ['js', 'html', 'sass', 'json', 'connect', 'watch']);
+
+gulp.task('build', ['js', 'html', 'sass', 'json']);
