@@ -1,6 +1,7 @@
 'use strict';
 
-((window, document, fields) => {
+((document, fields) => {
+
     const frm = document.getElementById('frm');
 
     const checkCurrentVal = (prev, curr) => {
@@ -42,4 +43,5 @@
     frm.appendChild(createEl('div', fields.map));
     frm.appendChild(createEl('img', fields.image));
     frm.appendChild(createEl('button', fields.button));
-})(window, document, fields);
+    
+})(document, fields);
