@@ -2,10 +2,7 @@ module.exports = function(config) {
     config.set({
         frameworks: ['jasmine'],
         files: [
-            'node_modules/babel-polyfill/dist/polyfill.js',
-            'node_modules/axios/dist/axios.min.js',
-            './src/js/lib/card-validator.min.js',
-            './src/js/loader.js',
+            './spec/index.mock.js',
             './spec/*.spec.js'
         ],
         reporters: ['spec', 'coverage'],
@@ -18,15 +15,14 @@ module.exports = function(config) {
             showSpecTiming: false
         },
         preprocessors: {
-            './src/js/loader.js': ['babel', 'coverage'],
-            // './src/js/main.js': ['babel', 'coverage'],
+            './spec/index.mock.js': ['babel', 'coverage'],
             './spec/*.spec.js': ['babel', 'coverage']
         },
         coverageReporter: {
             type : 'text',
             dir : 'coverage/'
         },
-        browsers: ['PhantomJS'/*, 'Chrome'*/],
+        browsers: ['PhantomJS'],
         singleRun: true//,
         // logLevel: config.LOG_DEBUG
     });

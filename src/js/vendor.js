@@ -38,6 +38,8 @@
 		Object.keys(inputs).map(curr => {
 	        localStorage.setItem(inputs[curr].name, inputs[curr].value);
 	    });
+
+		document.querySelector('.success').setAttribute('style', 'display: block');
 	};
 
 	let frm   = document.getElementById('frm'),

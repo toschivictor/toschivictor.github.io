@@ -1,7 +1,10 @@
-$color: #1abc9c;
+$color: rgb(24, 170, 141);
 
-h1, input::-webkit-input-placeholder, button {
+body {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, input::-webkit-input-placeholder, button, .success {
     transition: all 0.3s ease-in-out;
 }
 
@@ -84,4 +87,17 @@ button {
 #mapRenderer img {
     width: 50%;
     padding-bottom: 30px;
+}
+
+.success {
+    display: none;
+    margin: 25px auto -20px auto;
+    width: 100%;
+    max-width: 498px;
+    text-align: center;
+    font-size: 13px;
+    color: rgb(9, 142, 7);
+    background: rgb(198, 244, 206);
+    border-radius: 50px;
+    padding: 10px;
 }
